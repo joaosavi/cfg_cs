@@ -3,9 +3,9 @@ setlocal enabledelayedexpansion
 
 :: Requer Administrador
 net session >nul 2>&1
-if %errorLevel% neq 0 (
-    echo [ERRO] Execute como Administrador!
-    pause
+if %errorlevel% neq 0 (
+    echo Solicitando privilegios de administrador...
+    powershell -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
     exit /b
 )
 
